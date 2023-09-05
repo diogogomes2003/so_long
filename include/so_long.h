@@ -6,7 +6,7 @@
 /*   By: dduarte- <dduarte-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 09:42:41 by dduarte-          #+#    #+#             */
-/*   Updated: 2023/09/05 09:54:08 by dduarte-         ###   ########.fr       */
+/*   Updated: 2023/09/05 10:21:32 by dduarte-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,15 +82,16 @@ typedef struct s_game
 	int			player;	
 }	t_game;
 
-
 // Main func
-int	checkfilename(char *s);
-int	exit_error(t_game *game, char *msg);
+int		checkfilename(char *s);
+int		exit_error(t_game *game, char *msg);
 void	launch_game(char *file);
 // make_map func
-
+void	ft_initmap(t_game *game, char *mapname);
+void	make_map(t_game *game);
+void	ft_get_map(t_game *game);
 // utils func
-int	ft_len(char const *str);
-int	ft_controws(t_game *game);
+int		ft_len(char const *str);
+int		ft_controws(t_game *game);
 
 #endif
