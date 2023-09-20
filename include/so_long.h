@@ -6,39 +6,57 @@
 /*   By: dduarte- <dduarte-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 09:42:41 by dduarte-          #+#    #+#             */
-/*   Updated: 2023/09/05 10:21:32 by dduarte-         ###   ########.fr       */
+/*   Updated: 2023/09/20 12:35:50 by dduarte-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
+// libs
 # include "../libft/libft.h"
 # include "../mlx/mlx.h"
-# include "../mlx/mlx_int.h"
-# include <X11/X.h>
-# include <fcntl.h>
-# define WALL "./assets/sprites/WALL.xpm"
-# define SPACES "./assets/sprites/SPACES.xpm"
-# define PLAYER "./assets/sprites/CharSprites/Player.xpm"
-# define EXIT "./assets/sprites/Exit.xpm"
-# define COIN "./assets/sprites/coin.xpm"
+
+// Sprites
+# define PWALL "./assets/sprites/WALL.xpm"
+# define PSPACES "./assets/sprites/SPACES.xpm"
+# define PPLAYER "./assets/sprites/CharSprites/Player.xpm"
+# define PEXIT "./assets/sprites/Exit.xpm"
+# define PCOIN "./assets/sprites/coin.xpm"
 # define TILES "01CEP"
-# define SIZE 45
-
-# define MLX_ERROR "ERROR : mlx failed."
-# define MLX_WIN_ERROR "ERROR : win failed."
+# define SPACE	'0'
+# define WALL	'1'
+# define COIN	'C'
+# define EXIT	'E'
+# define PLAYER	'P'
+# define SIZE 32
 # define SPRITES 5
+# define W1 0
+# define S1 1
+# define C1 2
+# define E1 3
+# define P1 4
 
-typedef enum e_index
+// keys 
+# define ON_KEYPRESS 2
+# define ON_CLOSE 17
+# define ESC	65307
+# define W		119
+# define A		97
+# define S		115
+# define D		100
+# define UP		65362
+# define DOWN	65364
+# define LEFT	65361
+# define RIGHT	65363
+
+typedef enum e_mask
 {
-	Wall,
-	Spaces,
-	Coin,
-	Exit,
-	Player,
-}		t_id;
+	KEYPRESS_MASK	= (1L << 0),
+	CLOSE_MASK		= (1L << 17)
+}	t_mask;
 
+// structs
 typedef struct s_pos
 {
 	int	x;
@@ -52,46 +70,30 @@ typedef struct s_sprites
 	int		width;
 }			t_sprites;
 
-typedef enum e_key
-{
-	ESC		= 65307,
-	W		= 119,
-	A		= 97,
-	S		= 115,
-	D		= 100,
-	UP		= 65362,
-	DOWN	= 65364,
-	LEFT	= 65361,
-	RIGHT	= 65363,
-}			t_key;
-
 typedef struct s_game
 {
+	t_sprites	*sprites;
+	t_pos		prev;
+	t_pos		curr;
 	void		*mlx;
 	void		*win;
-	t_sprites	*sp;
-	t_pos		next;
-	t_pos		curr;
-	int			fd;
-	int			columns;
-	int			rows;
 	char		**map;
+	int			rows;
+	int			columns;
+	int			moves;
+	int			player;
+	int			total_coins;
 	int			coins;
-	int			count;
 	int			exit;
-	int			player;	
 }	t_game;
 
-// Main func
-int		checkfilename(char *s);
-int		exit_error(t_game *game, char *msg);
-void	launch_game(char *file);
-// make_map func
-void	ft_initmap(t_game *game, char *mapname);
-void	make_map(t_game *game);
-void	ft_get_map(t_game *game);
-// utils func
-int		ft_len(char const *str);
-int		ft_controws(t_game *game);
-
+// map[rows][columns]
+// so_long.c 
+int		check_file_extension(char *str);
+void	launch_game(char *map_file);
+// create_map.c
+void	create_map(t_game *so_long, char *map_file);
+void	map_rows(t_game *so_long, char *map_file);
+void	read_map(t_game *so_long, int fd);
+// check_map.c
 #endif

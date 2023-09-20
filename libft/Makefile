@@ -6,7 +6,7 @@
 #    By: dduarte- <dduarte-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/12 14:30:19 by dduarte-          #+#    #+#              #
-#    Updated: 2023/08/14 09:35:31 by dduarte-         ###   ########.fr        #
+#    Updated: 2023/09/20 11:31:06 by dduarte-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,21 +47,21 @@ CFLAGS = -Wall -Wextra -Werror
 
 $(NAME):	${OBJS}
 		ar rcs ${NAME} ${OBJS} ${HEADER}
-		@echo "${C_GREEN}[COMPILED]${C_DEF}"
+		echo "${C_GREEN}[COMPILED]${C_DEF}"
 
 all:	${NAME}
 
 clean:
 	${RM} ${OBJS}
-	@echo "${C_GREEN}[CLEANED]${C_DEF}"
+	echo "${C_GREEN}[CLEANED]${C_DEF}"
 
 fclean:	
 		${RM} ${OBJS}
 		${RM} ${NAME}
-		@echo "${C_GREEN}[FULL CLEANED]${C_DEF}"
+		echo "${C_GREEN}[FULL CLEANED]${C_DEF}"
 
 re:	fclean all
-	@echo "${C_GREEN}[REBUILD]${C_DEF}"
+	echo "${C_GREEN}[REBUILD]${C_DEF}"
 
 .PHONY: all clean fclean re
 
