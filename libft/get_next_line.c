@@ -6,11 +6,21 @@
 /*   By: dduarte- <dduarte-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 11:20:49 by dduarte-          #+#    #+#             */
-/*   Updated: 2023/09/20 09:34:49 by dduarte-         ###   ########.fr       */
+/*   Updated: 2023/10/04 09:10:52 by dduarte-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+char	*new_temp_aux(char *str)
+{
+	if (str[0] == '\0')
+	{
+		free(str);
+		str = 0;
+	}
+	return (str);
+}
 
 char	*ft_read_and_join(int fd, char *temp)
 {

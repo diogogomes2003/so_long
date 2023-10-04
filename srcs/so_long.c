@@ -6,7 +6,7 @@
 /*   By: dduarte- <dduarte-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 10:18:25 by dduarte-          #+#    #+#             */
-/*   Updated: 2023/09/20 12:21:21 by dduarte-         ###   ########.fr       */
+/*   Updated: 2023/10/04 11:41:40 by dduarte-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,13 @@ void	launch_game(char *map_file)
 
 	ft_bzero(&so_long, sizeof(t_game));
 	create_map(&so_long, map_file);
+	check_map(&so_long);
+	launch_mlx(&so_long);
+	load_sprites(&so_long);
+	render_map(&so_long);
+	mlx_hook(so_long.win, ON_KEYPRESS, KEYPRESS_MASK, check_key, &so_long);
+	mlx_hook(so_long.win, ON_CLOSE, CLOSE_MASK, quit_game, &so_long);
+	mlx_loop(so_long.mlx);
 }
 
 int	check_file_extension(char *str)

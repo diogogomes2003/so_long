@@ -6,13 +6,14 @@
 #    By: dduarte- <dduarte-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/14 08:32:53 by dduarte-          #+#    #+#              #
-#    Updated: 2023/09/20 11:20:22 by dduarte-         ###   ########.fr        #
+#    Updated: 2023/10/04 12:36:58 by dduarte-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = so_long
 
-SRC = srcs/so_long.c
+SRC = srcs/so_long.c srcs/check_map.c srcs/create_map.c srcs/libx.c \
+		srcs/clean_and_exit.c srcs/utils.c srcs/moves.c
 
 OBJ = ${SRC:.c=.o}
 

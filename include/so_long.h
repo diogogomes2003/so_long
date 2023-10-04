@@ -6,7 +6,7 @@
 /*   By: dduarte- <dduarte-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/14 09:42:41 by dduarte-          #+#    #+#             */
-/*   Updated: 2023/09/20 12:35:50 by dduarte-         ###   ########.fr       */
+/*   Updated: 2023/10/04 13:06:26 by dduarte-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,13 @@
 // libs
 # include "../libft/libft.h"
 # include "../mlx/mlx.h"
+# include <fcntl.h>
 
 // Sprites
-# define PWALL "./assets/sprites/WALL.xpm"
-# define PSPACES "./assets/sprites/SPACES.xpm"
-# define PPLAYER "./assets/sprites/CharSprites/Player.xpm"
-# define PEXIT "./assets/sprites/Exit.xpm"
+# define PWALL "./assets/sprites/wall.xpm"
+# define PSPACES "./assets/sprites/spaces.xpm"
+# define PPLAYER "./assets/sprites/player.xpm"
+# define PEXIT "./assets/sprites/exit.xpm"
 # define PCOIN "./assets/sprites/coin.xpm"
 # define TILES "01CEP"
 # define SPACE	'0'
@@ -63,7 +64,7 @@ typedef struct s_pos
 	int	y;
 }			t_pos;
 
-typedef struct s_sprites
+typedef struct t_sprite
 {
 	void	*img;
 	int		height;
@@ -96,4 +97,29 @@ void	create_map(t_game *so_long, char *map_file);
 void	map_rows(t_game *so_long, char *map_file);
 void	read_map(t_game *so_long, int fd);
 // check_map.c
+int	check_format(t_game *so_long);
+int	check_walls(t_game *so_long);
+int	check_paths(t_game *so_long);
+int	check_sprites(t_game *so_long);
+void	check_map(t_game *so_long);
+// libx.c
+void	launch_mlx(t_game *so_long);
+void	load_sprites(t_game *so_long);
+void	render_map(t_game *so_long);
+void	render_positions(t_game *so_long, int x, int y);
+// utils.c
+int	return_msg(t_game *so_long);
+int	flood_fill(int total_coins, int cur_y, int cur_x, char **test_map);
+int	quit_game(t_game *so_long);
+int	exit_error(t_game *so_long, char *msg);
+// moves.c
+void	move_player(t_game *so_long);
+void	check_move(t_game *so_long, int key);
+int	check_key(int key, t_game *so_long);
+// clean_and_exit.c
+void	clean_map_test(char **test_map);
+void	clean_sprites(t_game *so_long);
+void	clean_map(t_game *so_long);
+void	clean_game(t_game *so_long);
+
 #endif

@@ -6,7 +6,7 @@
 /*   By: dduarte- <dduarte-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 11:50:11 by dduarte-          #+#    #+#             */
-/*   Updated: 2023/09/20 12:33:19 by dduarte-         ###   ########.fr       */
+/*   Updated: 2023/10/04 12:53:48 by dduarte-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	read_map(t_game *so_long, int fd)
 	char	*line;
 
 	i = -1;
-	while (++1 < so_long->rows)
+	while (++i < so_long->rows)
 	{
 		line = get_next_line(fd);
 		if (!line)
@@ -62,5 +62,5 @@ void	create_map(t_game *so_long, char *map_file)
 	if (fd < 0)
 		exit_error(so_long, "Couldn't open requested file.");
 	read_map(so_long, fd);
-	Close(fd);
+	close(fd);
 }
