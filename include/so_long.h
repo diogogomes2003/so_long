@@ -13,8 +13,9 @@
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
-# include "lib/libft/libft.h"
-# include "lib/mlx/mlx.h"
+# include "../lib/libft/libft.h"
+# include "../lib/mlx/mlx.h"
+# include <fcntl.h>
 
 # define SIZE		50
 # define SPRITES	5
