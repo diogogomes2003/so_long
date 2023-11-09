@@ -10,7 +10,7 @@
 #                                                                              #
 # **************************************************************************** #
 
-SRC = so_long.c utils.c libx.c create_map.c clean_and_exit.c check_errors.c moves.c
+SRC = srcs/so_long.c srcs/utils.c srcs/libx.c srcs/create_map.c srcs/clean_and_exit.c srcs/check_errors.c srcs/moves.c
 
 NAME = so_long
 
