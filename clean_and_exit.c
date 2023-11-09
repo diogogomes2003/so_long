@@ -6,11 +6,11 @@
 /*   By: dduarte- <dduarte-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 12:36:36 by dduarte-          #+#    #+#             */
-/*   Updated: 2023/11/09 14:56:43 by dduarte-         ###   ########.fr       */
+/*   Updated: 2023/11/09 15:44:55 by dduarte-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/so_long.h"
+#include "so_long.h"
 
 void	clean_test_map(char **test_map)
 {

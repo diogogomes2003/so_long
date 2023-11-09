@@ -6,11 +6,11 @@
 /*   By: dduarte- <dduarte-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 12:36:07 by dduarte-          #+#    #+#             */
-/*   Updated: 2023/11/09 14:57:48 by dduarte-         ###   ########.fr       */
+/*   Updated: 2023/11/09 15:45:16 by dduarte-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/so_long.h"
+#include "so_long.h"
 
 int	return_msg(t_game *so_long)
 {

@@ -6,11 +6,11 @@
 /*   By: dduarte- <dduarte-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 11:50:11 by dduarte-          #+#    #+#             */
-/*   Updated: 2023/11/09 14:56:55 by dduarte-         ###   ########.fr       */
+/*   Updated: 2023/11/09 15:45:00 by dduarte-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/so_long.h"
+#include "so_long.h"
 
 void	read_map(t_game *so_long, int fd)
 {

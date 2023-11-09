@@ -6,11 +6,11 @@
 /*   By: dduarte- <dduarte-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 12:36:25 by dduarte-          #+#    #+#             */
-/*   Updated: 2023/11/09 14:57:26 by dduarte-         ###   ########.fr       */
+/*   Updated: 2023/11/09 15:45:09 by dduarte-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/so_long.h"
+#include "so_long.h"
 
 void	move_player(t_game *so_long)
 {

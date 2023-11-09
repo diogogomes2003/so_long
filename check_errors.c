@@ -6,11 +6,11 @@
 /*   By: dduarte- <dduarte-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 12:17:48 by dduarte-          #+#    #+#             */
-/*   Updated: 2023/11/09 15:00:58 by dduarte-         ###   ########.fr       */
+/*   Updated: 2023/11/09 15:44:47 by dduarte-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/so_long.h"
+#include "so_long.h"
 
 int	check_paths(t_game *so_long)
 {

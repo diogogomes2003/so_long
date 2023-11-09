@@ -6,11 +6,11 @@
 /*   By: dduarte- <dduarte-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 11:34:22 by dduarte-          #+#    #+#             */
-/*   Updated: 2023/11/09 14:57:14 by dduarte-         ###   ########.fr       */
+/*   Updated: 2023/11/09 16:04:15 by dduarte-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/so_long.h"
+#include "so_long.h"
 
 void	launch_mlx(t_game *so_long)
 {
@@ -58,22 +58,22 @@ void	render_position(t_game *so_long, int x, int y)
 {
 	if (so_long->map[y][x] == '1')
 		mlx_put_image_to_window(so_long->mlx, so_long->win,
-			so_long->sprites[W1].img, so_long->sprites[W1].width * x,
-			so_long->sprites[W1].height * y);
-	else if (so_long->map[y][x] == 'C')
+			so_long->sprites[W1].img, SIZE * x,
+			SIZE * y);
+	else if (so_long->map[y][x] == 'C')	
 		mlx_put_image_to_window(so_long->mlx, so_long->win,
-			so_long->sprites[C1].img, so_long->sprites[C1].width * x,
-			so_long->sprites[C1].height * y);
+			so_long->sprites[C1].img, SIZE * x,
+			SIZE * y);
 	else if (so_long->map[y][x] == 'E')
 		mlx_put_image_to_window(so_long->mlx, so_long->win,
-			so_long->sprites[E1].img, so_long->sprites[E1].width * x,
-			so_long->sprites[E1].height * y);
+			so_long->sprites[E1].img, SIZE * x,
+			SIZE * y);
 	else if (so_long->map[y][x] == '0')
 		mlx_put_image_to_window(so_long->mlx, so_long->win,
-			so_long->sprites[S1].img, so_long->sprites[S1].width * x,
-			so_long->sprites[S1].height * y);
+			so_long->sprites[S1].img, SIZE * x,
+			SIZE * y);
 	else if (so_long->map [y][x] == 'P')
 		mlx_put_image_to_window(so_long->mlx, so_long->win,
-			so_long->sprites[P1].img, so_long->sprites[P1].width * x,
-			so_long->sprites[P1].height * y);
+			so_long->sprites[P1].img, SIZE * x,
+			SIZE * y);
 }

@@ -6,25 +6,24 @@
 /*   By: dduarte- <dduarte-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 10:59:39 by diodos-s          #+#    #+#             */
-/*   Updated: 2023/11/09 14:58:24 by dduarte-         ###   ########.fr       */
+/*   Updated: 2023/11/09 15:59:00 by dduarte-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
-# include "../lib/libft/libft.h"
-# include "../lib/mlx/mlx.h"
-# include <fcntl.h>
+# include "lib/libft/libft.h"
+# include "lib/mlx/mlx.h"
 
 # define SIZE		50
 # define SPRITES	5
 
-# define FW1		"assets/sprites/wall.xpm"
-# define FS1		"assets/sprites/spaces.xpm"
-# define FC1		"assets/sprites/coin.xpm"
-# define FE1		"assets/sprites/exit.xpm"
-# define FP1		"assets/sprites/player.xpm"
+# define FW1		"sprites/wall.xpm"
+# define FS1		"sprites/spaces.xpm"
+# define FC1		"sprites/coin.xpm"
+# define FE1		"sprites/exit.xpm"
+# define FP1		"sprites/player.xpm"
 
 # define ON_KEYPRESS 2
 # define ON_CLOSE 17

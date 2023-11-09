@@ -6,43 +6,45 @@
 #    By: dduarte- <dduarte-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/14 08:32:53 by dduarte-          #+#    #+#              #
-#    Updated: 2023/11/09 14:50:21 by dduarte-         ###   ########.fr        #
+#    Updated: 2023/11/09 15:45:37 by dduarte-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
+SRC = so_long.c utils.c libx.c create_map.c clean_and_exit.c check_errors.c moves.c
+
 NAME = so_long
 
-SRC = srcs/so_long.c srcs/check_errors.c srcs/create_map.c srcs/libx.c \
-		srcs/clean_and_exit.c srcs/utils.c srcs/moves.c
+OBJS = ${SRC:.c=.o}
 
-OBJ = ${SRC:.c=.o}
-
-CC = cc
 RM = rm -f
-CFLAGS = -Wall -Wextra -Werror -g
-INCLUDE = -I include
+
+FLAGS = -Wall -Wextra -Werror -g
+
 MAKE = make -C
+
 LIBFT_PATH = lib/libft
+
 MLX_PATH = lib/mlx
+
 LIBFT = -L ${LIBFT_PATH} -lft
+
 MLX = -L ${MLX_PATH} -lmlx -Ilmlx -lXext -lX11 -lm
 
 all: ${NAME}
 
-$(NAME): ${OBJ}
-	${MAKE} ${LIBFT_PATH}
-	${MAKE} ${MLX_PATH}
-	${CC} ${CFLAGS} ${OBJ} ${LIBFT} ${MLX} -o ${NAME}
-
-
+$(NAME): ${OBJS}
+				${MAKE} ${LIBFT_PATH}
+				${MAKE} ${MLX_PATH}
+				cc ${FLAGS} ${OBJS} ${LIBFT} ${MLX} -o ${NAME}
+				
 clean:
-	${MAKE} ${LIBFT_PATH} clean
-	${MAKE} ${MLX_PATH} clean
-	${RM} ${OBJ} ${OBJ_BONUS}
+				${MAKE} ${LIBFT_PATH} clean
+				${MAKE} ${MLX_PATH} clean
+				${RM} ${OBJS}
 
 fclean: clean
-	${MAKE} ${LIBFT_PATH} fclean
-	${RM} ${NAME}
+				${MAKE} ${LIBFT_PATH} fclean
+				${RM} ${NAME}
 
 re: fclean all
 
