@@ -6,99 +6,23 @@
 /*   By: dduarte- <dduarte-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 11:44:11 by dduarte-          #+#    #+#             */
-/*   Updated: 2023/10/04 09:40:26 by dduarte-         ###   ########.fr       */
+/*   Updated: 2023/11/10 12:29:28 by dduarte-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft.h"
 
-size_t	ft_strlenget(char *s)
+char	*new_stash_aux(char *new_stash)
 {
-	size_t	i;
-
-	i = 0;
-	if (!s)
-		return (0);
-	while (s[i] != '\0')
-		i++;
-	return (i);
-}
-
-char	*ft_strchrget(char *s, int line_break)
-{
-	int	i;
-
-	i = 0;
-	if (!s)
-		return (0);
-	if (line_break == '\0')
-		return ((char *)&s[ft_strlen(s)]);
-	while (s[i] != '\0')
+	if (new_stash[0] == '\0')
 	{
-		if (s[i] == (char)line_break)
-			return ((char *)&s[i]);
-		i++;
+		free (new_stash);
+		new_stash = 0;
 	}
-	return (0);
+	return (new_stash);
 }
 
-char	*ft_strjoinget(char *temp, char *buffer)
-{
-	size_t	i;
-	size_t	j;
-	char	*strjoin;
-
-	i = -1;
-	j = 0;
-	if (!temp)
-	{
-		temp = (char *)malloc(1 * sizeof(char));
-		temp[0] = '\0';
-	}
-	if (!temp || !buffer)
-		return (NULL);
-	strjoin = malloc(sizeof(char) * (ft_strlen(temp) + ft_strlen(buffer) + 1));
-	if (!strjoin)
-		return (NULL);
-	if (temp)
-		while (temp[++i] != '\0')
-			strjoin[i] = temp[i];
-	while (buffer[j] != '\0')
-		strjoin[i++] = buffer[j++];
-	strjoin[ft_strlen(temp) + ft_strlen(buffer)] = '\0';
-	free(temp);
-	return (strjoin);
-}
-
-char	*ft_get_line(char *temp)
-{
-	int		i;
-	char	*str;
-
-	i = 0;
-	if (temp[i] == 0)
-		return (NULL);
-	while (temp[i] && temp[i] != '\n')
-		i++;
-	if (temp[i] == '\0')
-		str = malloc(sizeof(char) * (i + 1));
-	else
-		str = malloc(sizeof(char) * (i + 2));
-	if (!str)
-		return (NULL);
-	i = 0;
-	while (temp[i] && temp[i] != '\n')
-	{
-		str[i] = temp[i];
-		i++;
-	}
-	if (temp[i] == '\n')
-		str[i++] = '\n';
-	str[i] = '\0';
-	return (str);
-}
-
-char	*ft_new_temp(char *temp)
+char	*new_stash(char *stash)
 {
 	int		i;
 	int		j;
@@ -106,21 +30,102 @@ char	*ft_new_temp(char *temp)
 
 	i = 0;
 	j = 0;
-	while (temp[i] != '\n' && temp[i])
+	while (stash[i] && stash[i] != '\n')
 		i++;
-	if (!temp[i])
+	if (!stash[i])
 	{
-		free(temp);
+		free(stash);
 		return (NULL);
 	}
-	str = malloc(sizeof(char) * (ft_strlen(temp) - i + 1));
+	str = malloc(sizeof(char) * (ft_strlen(stash) - i + 1));
 	if (!str)
 		return (NULL);
 	i++;
-	while (temp[i])
-		str[j++] = temp[i++];
+	while (stash[i])
+		str[j++] = stash[i++];
 	str[j] = '\0';
-	free(temp);
-	str = new_temp_aux(str);
+	free(stash);
+	str = new_stash_aux(str);
 	return (str);
+}
+
+char	*extract_line(char *stash)
+{
+	int		i;
+	char	*str;
+
+	i = 0;
+	if (stash[i] == 0)
+		return (NULL);
+	while (stash[i] && stash[i] != '\n')
+		i++;
+	if (stash[i] == '\0')
+		str = malloc(sizeof(char) * (i + 1));
+	else
+		str = malloc(sizeof(char) * (i + 2));
+	if (!str)
+		return (NULL);
+	i = 0;
+	while (stash[i] && stash[i] != '\n')
+	{	
+		str[i] = stash[i];
+		i++;
+	}
+	if (stash[i] == '\n')
+		str[i++] = '\n';
+	str[i] = '\0';
+	return (str);
+}
+
+size_t	ft_strlen_gnl(char *s)
+{
+	size_t	i;
+
+	i = 0;
+	while (s[i])
+		i++;
+	return (i);
+}
+
+char	*found_new_line(char *s)
+{
+	int	i;
+
+	i = 0;
+	if (!s)
+		return (0);
+	while (s[i] != '\0')
+	{
+		if (s[i] == '\n')
+			return ((char *)&s[i]);
+		i++;
+	}
+	return (0);
+}
+
+char	*add_to_stash(char *stash, char *buf)
+{
+	size_t	i;
+	size_t	j;
+	char	*add;
+
+	i = -1;
+	j = 0;
+	if (!stash)
+	{
+		stash = (char *)malloc(1 * sizeof(char));
+		stash[0] = '\0';
+	}
+	if (!stash || !buf)
+		return (NULL);
+	add = malloc(sizeof(char) * (ft_strlen(stash) + ft_strlen(buf) + 1));
+	if (!add)
+		return (NULL);
+	while (stash[++i] != '\0')
+		add[i] = stash[i];
+	while (buf[j] != '\0')
+		add[i++] = buf[j++];
+	add[i] = '\0';
+	free(stash);
+	return (add);
 }

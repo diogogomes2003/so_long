@@ -6,58 +6,48 @@
 /*   By: dduarte- <dduarte-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 11:20:49 by dduarte-          #+#    #+#             */
-/*   Updated: 2023/10/04 09:40:29 by dduarte-         ###   ########.fr       */
+/*   Updated: 2023/11/10 12:29:26 by dduarte-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft.h"
 
-char	*new_temp_aux(char *str)
+char	*read_and_stash(int fd, char *stash)
 {
-	if (str[0] == '\0')
-	{
-		free(str);
-		str = 0;
-	}
-	return (str);
-}
-
-char	*ft_read_and_join(int fd, char *temp)
-{
-	char	*buffer;
+	char	*buf;
 	int		bytes_read;
 
-	buffer = malloc(sizeof(char) * (BUFFER_SIZE + 1));
-	if (!buffer)
+	buf = malloc(sizeof(char) * (BUFFER_SIZE + 1));
+	if (!buf)
 		return (NULL);
 	bytes_read = 1;
-	while (!ft_strchr(temp, '\n') && bytes_read != 0)
+	while (!found_new_line(stash) && bytes_read > 0)
 	{
-		bytes_read = read(fd, buffer, BUFFER_SIZE);
+		bytes_read = read(fd, buf, BUFFER_SIZE);
 		if (bytes_read == -1)
 		{
-			free(temp);
-			free(buffer);
+			free(stash);
+			free(buf);
 			return (NULL);
 		}
-		buffer[bytes_read] = '\0';
-		temp = ft_strjoin(temp, buffer);
+		buf[bytes_read] = '\0';
+		stash = add_to_stash(stash, buf);
 	}
-	free(buffer);
-	return (temp);
+	free(buf);
+	return (stash);
 }
 
 char	*get_next_line(int fd)
 {
+	static char	*stash[FOPEN_MAX];
 	char		*line;
-	static char	*temp[FOPEN_MAX];
 
 	if (fd < 0 || BUFFER_SIZE <= 0 || fd > FOPEN_MAX)
 		return (0);
-	temp[fd] = ft_read_and_join(fd, temp[fd]);
-	if (!temp[fd])
+	stash[fd] = read_and_stash(fd, stash[fd]);
+	if (!stash[fd])
 		return (NULL);
-	line = ft_get_line(temp[fd]);
-	temp[fd] = ft_new_temp(temp[fd]);
+	line = extract_line(stash[fd]);
+	stash[fd] = new_stash(stash[fd]);
 	return (line);
 }
