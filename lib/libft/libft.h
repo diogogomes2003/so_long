@@ -6,7 +6,7 @@
 /*   By: dduarte- <dduarte-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 09:29:47 by dduarte-          #+#    #+#             */
-/*   Updated: 2023/10/04 09:06:06 by dduarte-         ###   ########.fr       */
+/*   Updated: 2023/11/10 11:54:16 by dduarte-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,15 +25,14 @@ typedef struct s_list
 	struct s_list	*next;
 }	t_list;
 // Get next line
+char	*new_stash_aux(char *new_stash);
+char	*new_stash(char *stash);
+char	*extract_line(char *stash);
+size_t	ft_strlen_gnl(char *s);
+char	*found_new_line(char *s);
+char	*add_to_stash(char *stash, char *buf);
+char	*read_and_stash(int fd, char *stash);
 char	*get_next_line(int fd);
-char	*ft_read_and_join(int fd, char *temp);
-char	*ft_get_line(char *temp);
-size_t	ft_strlenget(char *s);
-char	*ft_strchrget(char *s, int line_break);
-char	*ft_strjoinget(char *temp, char *buffer);
-char	*ft_strjoinget(char *temp, char *buffer);
-char	*new_temp_aux(char *str);
-char	*ft_new_temp(char *temp);
 // Printf
 int		ft_formats(va_list args, const char format);
 int		ft_printf(const char *format, ...);
