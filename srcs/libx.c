@@ -6,7 +6,7 @@
 /*   By: dduarte- <dduarte-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 11:34:22 by dduarte-          #+#    #+#             */
-/*   Updated: 2023/11/09 16:04:15 by dduarte-         ###   ########.fr       */
+/*   Updated: 2023/11/10 12:40:41 by dduarte-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ void	render_position(t_game *so_long, int x, int y)
 		mlx_put_image_to_window(so_long->mlx, so_long->win,
 			so_long->sprites[W1].img, SIZE * x,
 			SIZE * y);
-	else if (so_long->map[y][x] == 'C')	
+	else if (so_long->map[y][x] == 'C')
 		mlx_put_image_to_window(so_long->mlx, so_long->win,
 			so_long->sprites[C1].img, SIZE * x,
 			SIZE * y);

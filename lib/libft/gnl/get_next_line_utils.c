@@ -6,7 +6,7 @@
 /*   By: dduarte- <dduarte-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 11:44:11 by dduarte-          #+#    #+#             */
-/*   Updated: 2023/11/10 12:29:28 by dduarte-         ###   ########.fr       */
+/*   Updated: 2023/11/10 12:38:51 by dduarte-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ char	*extract_line(char *stash)
 		return (NULL);
 	i = 0;
 	while (stash[i] && stash[i] != '\n')
-	{	
+	{
 		str[i] = stash[i];
 		i++;
 	}
@@ -75,16 +75,6 @@ char	*extract_line(char *stash)
 		str[i++] = '\n';
 	str[i] = '\0';
 	return (str);
-}
-
-size_t	ft_strlen_gnl(char *s)
-{
-	size_t	i;
-
-	i = 0;
-	while (s[i])
-		i++;
-	return (i);
 }
 
 char	*found_new_line(char *s)

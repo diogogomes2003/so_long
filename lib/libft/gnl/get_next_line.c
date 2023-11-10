@@ -6,7 +6,7 @@
 /*   By: dduarte- <dduarte-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 11:20:49 by dduarte-          #+#    #+#             */
-/*   Updated: 2023/11/10 12:29:26 by dduarte-         ###   ########.fr       */
+/*   Updated: 2023/11/10 12:39:14 by dduarte-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,16 @@ char	*read_and_stash(int fd, char *stash)
 	}
 	free(buf);
 	return (stash);
+}
+
+size_t	ft_strlen_gnl(char *s)
+{
+	size_t	i;
+
+	i = 0;
+	while (s[i])
+		i++;
+	return (i);
 }
 
 char	*get_next_line(int fd)
